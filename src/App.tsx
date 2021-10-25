@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   name: string;
@@ -8,6 +8,18 @@ type Props = {
 const App = (props: Props) => {
   const [state, setState] = useState(props);
   const { name, price } = state;
+
+  useEffect(() => {
+    console.log("This is like componentDidMount or componentDidUpdate");
+  });
+
+  useEffect(() => {
+    console.log("This ins like componentDidMount");
+  }, []);
+
+  useEffect(() => {
+    console.log("This callback is for name only.");
+  }, [name]);
 
   return (
     <>
