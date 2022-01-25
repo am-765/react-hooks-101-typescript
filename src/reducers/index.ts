@@ -1,4 +1,4 @@
-type State = [] | [{ id: number; title: string; body: string }];
+export type State = { id: number; title: string; body: string };
 
 type CreateAction = {
   type: "CREATE_EVENT";
@@ -16,7 +16,7 @@ type DeleteAllAction = {
 
 type Actions = CreateAction | DeleteAction | DeleteAllAction;
 
-const events = (state: State, action: Actions) => {
+const events = (state: State[], action: Actions) => {
   switch (action.type) {
     case "CREATE_EVENT":
       const event = { title: action.title, body: action.body };
