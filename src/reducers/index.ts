@@ -8,13 +8,14 @@ type CreateAction = {
 
 type DeleteAction = {
   type: "DELETE_EVENT";
+  id: number;
 };
 
 type DeleteAllAction = {
   type: "DELETE_ALL_EVENT";
 };
 
-type Actions = CreateAction | DeleteAction | DeleteAllAction;
+export type Actions = CreateAction | DeleteAction | DeleteAllAction;
 
 const events = (state: State[], action: Actions) => {
   switch (action.type) {
@@ -25,7 +26,7 @@ const events = (state: State[], action: Actions) => {
       return [...state, { id, ...event }];
 
     case "DELETE_EVENT":
-      return state;
+      return state.filter((event) => event.id !== action.id);
 
     case "DELETE_ALL_EVENT":
       return [];
