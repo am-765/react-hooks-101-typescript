@@ -9,14 +9,19 @@ type Props = {
 const Event: React.VFC<Props> = ({ event, dispatch }) => {
   const id = event.id;
   const handleClickDeleteButton = () => {
-    dispatch({
-      type: "DELETE_EVENT",
-      id,
-    });
+    const result = window.confirm(
+      `イベント(${id})を本当に削除してもいいですか？`
+    );
+    if (result) {
+      dispatch({
+        type: "DELETE_EVENT",
+        id,
+      });
+    }
   };
 
   return (
-    <tr>
+    <tr key={id}>
       <td>{id}</td>
       <td>{event.title}</td>
       <td>{event.body}</td>
