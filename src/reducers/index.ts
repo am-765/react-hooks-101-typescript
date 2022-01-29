@@ -1,21 +1,5 @@
-export type State = { id: number; title: string; body: string };
-
-type CreateAction = {
-  type: "CREATE_EVENT";
-  title: string;
-  body: string;
-};
-
-type DeleteAction = {
-  type: "DELETE_EVENT";
-  id: number;
-};
-
-type DeleteAllAction = {
-  type: "DELETE_ALL_EVENT";
-};
-
-export type Actions = CreateAction | DeleteAction | DeleteAllAction;
+import { State } from "../types/State";
+import { Actions } from "../types/Actions";
 
 const events = (state: State[], action: Actions) => {
   switch (action.type) {

@@ -1,13 +1,8 @@
 import React from "react";
-import { State, Actions } from "../reducers";
-
-type Props = {
-  event: State;
-  dispatch: React.Dispatch<Actions>;
-};
+import { Props } from "../types/Props";
 
 const Event: React.VFC<Props> = ({ event, dispatch }) => {
-  const id = event.id;
+  const id = event?.id;
   const handleClickDeleteButton = () => {
     const result = window.confirm(
       `イベント(${id})を本当に削除してもいいですか？`
@@ -23,8 +18,8 @@ const Event: React.VFC<Props> = ({ event, dispatch }) => {
   return (
     <tr key={id}>
       <td>{id}</td>
-      <td>{event.title}</td>
-      <td>{event.body}</td>
+      <td>{event?.title}</td>
+      <td>{event?.body}</td>
       <td>
         <button
           type="button"
