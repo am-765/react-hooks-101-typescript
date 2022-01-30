@@ -1,5 +1,6 @@
 import React from "react";
 import { Props } from "../types/Props";
+import actionTypes from "../actions";
 
 const Event: React.VFC<Props> = ({ event, dispatch }) => {
   const id = event?.id;
@@ -9,7 +10,7 @@ const Event: React.VFC<Props> = ({ event, dispatch }) => {
     );
     if (result) {
       dispatch({
-        type: "DELETE_EVENT",
+        type: actionTypes.DELETE_EVENT,
         id,
       });
     }

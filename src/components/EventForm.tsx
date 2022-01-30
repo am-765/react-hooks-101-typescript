@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Props } from "../types/Props";
+import actionTypes from "../actions";
 
 type PreventDefaultType = {
   preventDefault: () => void;
@@ -12,7 +13,7 @@ const EventForm: React.VFC<Props> = ({ state, dispatch }) => {
   const addEvent = (e: PreventDefaultType) => {
     e.preventDefault();
     dispatch({
-      type: "CREATE_EVENT",
+      type: actionTypes.CREATE_EVENT,
       title,
       body,
     });
@@ -27,7 +28,7 @@ const EventForm: React.VFC<Props> = ({ state, dispatch }) => {
     );
     if (result) {
       dispatch({
-        type: "DELETE_ALL_EVENT",
+        type: actionTypes.DELETE_ALL_EVENT,
       });
     }
   };
