@@ -1,13 +1,6 @@
-import { useContext, createContext } from "react";
+import createCtx from "../contexts";
 
-const createCtx = <ContextType>() => {
-  const ctx = createContext<ContextType | undefined>(undefined);
-  const useCtx = () => {
-    const c = useContext(ctx);
-    if (!c) throw new Error("useCtx must be inside a Provider with a value");
-    return c;
-  };
-  return [useCtx, ctx.Provider] as const;
-};
+type appContextType = string;
 
-export default createCtx;
+export const [useAppContext, SetAppContextProvider] =
+  createCtx<appContextType>();

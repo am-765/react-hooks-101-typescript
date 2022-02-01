@@ -1,10 +1,13 @@
 import React from "react";
 import Event from "./Event";
+import { useAppContext } from "../contexts/AppContext";
 import { Props } from "../types/Props";
 
 const Events: React.VFC<Props> = ({ state, dispatch }) => {
+  const value = useAppContext();
   return (
     <>
+      <div>{value}</div>
       <h4>イベント一覧</h4>
       <table className="table table-hover">
         <thead>
