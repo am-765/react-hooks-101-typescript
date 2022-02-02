@@ -1,8 +1,14 @@
 import React from "react";
-import { Props } from "../types/Props";
+import { State } from "../types/State";
 import actionTypes from "../actions";
+import { useAppContext } from "../contexts/AppContext";
 
-const Event: React.VFC<Props> = ({ event, dispatch }) => {
+type Props = {
+  event: State;
+};
+
+const Event: React.VFC<Props> = ({ event }) => {
+  const { dispatch } = useAppContext();
   const id = event?.id;
   const handleClickDeleteButton = () => {
     const result = window.confirm(

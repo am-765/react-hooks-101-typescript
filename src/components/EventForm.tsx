@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { Props } from "../types/Props";
+import { useState } from "react";
 import actionTypes from "../actions";
+import { useAppContext } from "../contexts/AppContext";
 
 type PreventDefaultType = {
   preventDefault: () => void;
 };
 
-const EventForm: React.VFC<Props> = ({ state, dispatch }) => {
+const EventForm = () => {
+  const { state, dispatch } = useAppContext();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 

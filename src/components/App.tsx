@@ -13,10 +13,10 @@ const initialState: State[] = [];
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <SetAppContextProvider value={"Hello, I am a Provider."}>
+    <SetAppContextProvider value={{ state, dispatch }}>
       <div className="container-fluid">
-        <EventForm {...{ state, dispatch }} />
-        <Events {...{ state, dispatch }} />
+        <EventForm />
+        <Events />
       </div>
     </SetAppContextProvider>
   );
