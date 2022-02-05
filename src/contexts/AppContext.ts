@@ -4,7 +4,7 @@ import { State } from "../types/State";
 import { Actions } from "../types/Actions";
 
 type appContextType = {
-  state: State[];
+  state: { events: State[] };
   dispatch: React.Dispatch<Actions>;
 };
 

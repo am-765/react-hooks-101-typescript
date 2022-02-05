@@ -5,12 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EventForm from "./EventForm";
 import Events from "./Events";
 import { SetAppContextProvider } from "../contexts/AppContext";
-import reducer from "../reducers";
+import reducer from "../reducers/";
 import { State } from "../types/State";
 
-const initialState: State[] = [];
-
 const App = () => {
+  const initialState: { events: State[] } = {
+    events: [],
+  };
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <SetAppContextProvider value={{ state, dispatch }}>
