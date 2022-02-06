@@ -1,5 +1,5 @@
 import { useState } from "react";
-import actionTypes from "../actions";
+import { eventsActionTypes } from "../actions";
 import { useAppContext } from "../contexts/AppContext";
 
 type PreventDefaultType = {
@@ -14,7 +14,7 @@ const EventForm = () => {
   const addEvent = (e: PreventDefaultType) => {
     e.preventDefault();
     dispatch({
-      type: actionTypes.CREATE_EVENT,
+      type: eventsActionTypes.CREATE_EVENT,
       title,
       body,
     });
@@ -29,7 +29,7 @@ const EventForm = () => {
     );
     if (result) {
       dispatch({
-        type: actionTypes.DELETE_ALL_EVENT,
+        type: eventsActionTypes.DELETE_ALL_EVENT,
       });
     }
   };

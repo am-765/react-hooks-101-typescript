@@ -13,4 +13,4 @@ type DeleteAllAction = {
   type: "DELETE_ALL_EVENT";
 };
 
-export type Actions = CreateAction | DeleteAction | DeleteAllAction;
+export type EventsAction = CreateAction | DeleteAction | DeleteAllAction;

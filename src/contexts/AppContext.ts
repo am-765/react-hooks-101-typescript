@@ -1,12 +1,12 @@
 import React from "react";
 import createCtx from "../contexts";
-import { State } from "../types/State";
-import { Actions } from "../types/Actions";
+import { EventsState } from "../types/events/State";
+import { EventsAction } from "../types/events/Action";
 
-type appContextType = {
-  state: { events: State[] };
-  dispatch: React.Dispatch<Actions>;
+type AppContextType = {
+  state: { events: EventsState[] };
+  dispatch: React.Dispatch<EventsAction>;
 };
 
 export const [useAppContext, SetAppContextProvider] =
-  createCtx<appContextType>();
+  createCtx<AppContextType>();

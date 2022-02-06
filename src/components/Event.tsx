@@ -1,10 +1,10 @@
 import React from "react";
-import { State } from "../types/State";
-import actionTypes from "../actions";
+import { EventsState } from "../types/events/State";
+import { eventsActionTypes } from "../actions";
 import { useAppContext } from "../contexts/AppContext";
 
 type Props = {
-  event: State;
+  event: EventsState;
 };
 
 const Event: React.VFC<Props> = ({ event }) => {
@@ -16,7 +16,7 @@ const Event: React.VFC<Props> = ({ event }) => {
     );
     if (result) {
       dispatch({
-        type: actionTypes.DELETE_EVENT,
+        type: eventsActionTypes.DELETE_EVENT,
         id,
       });
     }

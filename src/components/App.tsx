@@ -6,11 +6,18 @@ import EventForm from "./EventForm";
 import Events from "./Events";
 import { SetAppContextProvider } from "../contexts/AppContext";
 import reducer from "../reducers/";
-import { State } from "../types/State";
+import { EventsState } from "../types/events/State";
+import { OperationLogsState } from "../types/operationLogs/State";
+
+type InitialState = {
+  events: EventsState[];
+  operationLogs: OperationLogsState[];
+};
 
 const App = () => {
-  const initialState: { events: State[] } = {
+  const initialState: InitialState = {
     events: [],
+    operationLogs: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
