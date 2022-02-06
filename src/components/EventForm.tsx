@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { eventsActionTypes } from "../actions";
+import { eventsActionTypes, operationLogsActionTypes } from "../actions";
 import { useAppContext } from "../contexts/AppContext";
+import { timeCurrentIso8601 } from "../utils";
 
 type PreventDefaultType = {
   preventDefault: () => void;
@@ -13,11 +14,19 @@ const EventForm = () => {
 
   const addEvent = (e: PreventDefaultType) => {
     e.preventDefault();
+
     dispatch({
       type: eventsActionTypes.CREATE_EVENT,
       title,
       body,
     });
+
+    dispatch({
+      type: operationLogsActionTypes.ADD_OPERATION_LOG,
+      description: "イベントを作成しました",
+      operatedAt: timeCurrentIso8601(),
+    });
+
     setTitle("");
     setBody("");
   };
@@ -30,6 +39,12 @@ const EventForm = () => {
     if (result) {
       dispatch({
         type: eventsActionTypes.DELETE_ALL_EVENT,
+      });
+
+      dispatch({
+        type: operationLogsActionTypes.ADD_OPERATION_LOG,
+        description: "全てのイベントを削除しました",
+        operatedAt: timeCurrentIso8601(),
       });
     }
   };
