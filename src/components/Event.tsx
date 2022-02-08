@@ -1,7 +1,8 @@
 import React from "react";
 import { EventsState } from "../types/events/State";
-import { eventsActionTypes } from "../actions";
+import { eventsActionTypes, operationLogsActionTypes } from "../actions";
 import { useAppContext } from "../contexts/AppContext";
+import { timeCurrentIso8601 } from "../utils";
 
 type Props = {
   event: EventsState;
@@ -12,12 +13,18 @@ const Event: React.VFC<Props> = ({ event }) => {
   const id = event?.id;
   const handleClickDeleteButton = () => {
     const result = window.confirm(
-      `イベント(${id})を本当に削除してもいいですか？`
+      `イベント(id=${id})を本当に削除してもいいですか？`
     );
     if (result) {
       dispatch({
         type: eventsActionTypes.DELETE_EVENT,
         id,
+      });
+
+      dispatch({
+        type: operationLogsActionTypes.ADD_OPERATION_LOG,
+        description: `イベント(id=${id})を削除しました`,
+        operatedAt: timeCurrentIso8601(),
       });
     }
   };
