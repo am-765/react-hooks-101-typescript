@@ -8,6 +8,7 @@ import { SetAppContextProvider } from "../contexts/AppContext";
 import reducer from "../reducers/";
 import { EventsState } from "../types/events/State";
 import { OperationLogsState } from "../types/operationLogs/State";
+import OperationLogs from "./OperationLogs";
 
 type InitialState = {
   events: EventsState[];
@@ -25,6 +26,7 @@ const App = () => {
       <div className="container-fluid">
         <EventForm />
         <Events />
+        <OperationLogs />
       </div>
     </SetAppContextProvider>
   );
